@@ -56,4 +56,25 @@ export class TwitterApi implements ITwitterApi {
 
     return users;
   };
+
+  /**
+   * 指定されたユーザIDのユーザをフォローしているユーザを返す.
+   *
+   * @param {string} userId フォローされているユーザのユーザID
+   */
+  public getUsersFollowingUser = async (userId: string): Promise<UserDTO[]> => {
+    const response = await this.client.users.usersIdFollowers(userId);
+
+    console.log(response);
+
+    const users: UserDTO[] = [];
+
+    response.data?.map((user) => {
+      return users.push(new UserDTO(user.id, user.name, user.username));
+    });
+
+    console.log(users);
+
+    return users;
+  };
 }
