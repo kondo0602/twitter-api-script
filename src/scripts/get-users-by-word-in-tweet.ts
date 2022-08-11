@@ -3,14 +3,7 @@ import "dotenv/config";
 import { Client } from "twitter-api-sdk";
 import { ITwitterApi } from "./twitter-api-interface";
 import { TwitterApi } from "../infrastructure/twitter-api";
-
-export class UserDTO {
-  constructor(
-    private readonly id: string,
-    private readonly name: string,
-    private readonly username: string
-  ) {}
-}
+import { UserDTO } from "../domain/user-dto";
 
 class GetUsersByWordInTweet {
   constructor(private twitterApi: ITwitterApi) {}

@@ -1,6 +1,6 @@
 import { Client } from "twitter-api-sdk";
 import { ITwitterApi } from "../scripts/twitter-api-interface";
-import { UserDTO } from "../scripts/get-users-by-word-in-tweet";
+import { UserDTO } from "../domain/user-dto";
 
 export class TwitterApi implements ITwitterApi {
   constructor(private readonly client: Client) {}

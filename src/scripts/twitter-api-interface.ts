@@ -1,4 +1,4 @@
-import { UserDTO } from "./get-users-by-word-in-tweet";
+import { UserDTO } from "../domain/user-dto";
 
 export type ITwitterApi = {
   getUserIdsByWordInTweet: (
