@@ -5,13 +5,21 @@ import { ITwitterApi } from "./twitter-api-interface";
 import { TwitterApi } from "../infrastructure/twitter-api";
 import { UserDTO } from "../domain/user-dto";
 
-class GetUsersByWordInTweet {
+export class GetUsersByWordInTweet {
   constructor(private twitterApi: ITwitterApi) {}
 
   public execute = async (
     word: string,
-    maxResults: number
+    maxResults: number = 100
   ): Promise<UserDTO[]> => {
+    if (word.length > 512) {
+      throw new Error("検索する単語は512文字以内で指定してください.");
+    }
+
+    if (maxResults < 10 || 100 < maxResults) {
+      throw new Error("表示するユーザ数は10〜100の範囲で指定してください.");
+    }
+
     const userIds = await this.twitterApi.getUserIdsByWordInTweet(
       word,
       maxResults
@@ -26,4 +34,4 @@ const client = new Client(process.env.BEARER_TOKEN as string);
 const twitterApi = new TwitterApi(client);
 const script = new GetUsersByWordInTweet(twitterApi);
 
-script.execute(process.argv[2], process.argv[3] as unknown as number);
+script.execute(process.argv[2], Number(process.argv[3]));
