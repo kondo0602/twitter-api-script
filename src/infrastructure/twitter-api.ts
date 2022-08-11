@@ -5,6 +5,12 @@ import { UserDTO } from "../scripts/get-users-by-word-in-tweet";
 export class TwitterApi implements ITwitterApi {
   constructor(private readonly client: Client) {}
 
+  /**
+   * 指定された単語を含むツイートを行なったユーザのIDを返す.
+   *
+   * @param {string} word ツイートに含まれる単語
+   * @param {number} maxResults ユーザ数
+   */
   public getUserIdsByWordInTweet = async (
     word: string,
     maxResults: number
@@ -30,6 +36,11 @@ export class TwitterApi implements ITwitterApi {
     return userIds;
   };
 
+  /**
+   * 指定されたユーザIDのユーザを返す.
+   *
+   * @param {string[]} userIds
+   */
   public getUsersByUserIds = async (userIds: string[]): Promise<UserDTO[]> => {
     const response = await this.client.users.findUsersById({
       ids: userIds,
