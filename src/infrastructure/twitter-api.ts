@@ -31,8 +31,6 @@ export class TwitterApi implements ITwitterApi {
       });
     }
 
-    console.log(userIds);
-
     return userIds;
   };
 
@@ -52,8 +50,6 @@ export class TwitterApi implements ITwitterApi {
       return users.push(new UserDTO(user.id, user.name, user.username));
     });
 
-    console.log(users);
-
     return users;
   };
 
@@ -71,15 +67,11 @@ export class TwitterApi implements ITwitterApi {
       max_results: maxResults,
     });
 
-    console.log(response);
-
     const users: UserDTO[] = [];
 
     response.data?.map((user) => {
       return users.push(new UserDTO(user.id, user.name, user.username));
     });
-
-    console.log(users);
 
     return users;
   };
