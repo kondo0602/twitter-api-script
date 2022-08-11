@@ -6,5 +6,8 @@ export type ITwitterApi = {
     maxResults: number
   ) => Promise<string[]>;
   getUsersByUserIds: (userIds: string[]) => Promise<UserDTO[]>;
-  getUsersFollowingUser: (username: string) => Promise<UserDTO[]>;
+  getUsersFollowingUser: (
+    userId: string,
+    maxResults: number
+  ) => Promise<UserDTO[]>;
 };

@@ -61,9 +61,15 @@ export class TwitterApi implements ITwitterApi {
    * 指定されたユーザIDのユーザをフォローしているユーザを返す.
    *
    * @param {string} userId フォローされているユーザのユーザID
+   * @param {number} maxResults 取得するユーザ数
    */
-  public getUsersFollowingUser = async (userId: string): Promise<UserDTO[]> => {
-    const response = await this.client.users.usersIdFollowers(userId);
+  public getUsersFollowingUser = async (
+    userId: string,
+    maxResults: number
+  ): Promise<UserDTO[]> => {
+    const response = await this.client.users.usersIdFollowers(userId, {
+      max_results: maxResults,
+    });
 
     console.log(response);
 
