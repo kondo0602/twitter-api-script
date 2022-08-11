@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "getUsersByWordInTweet": "ts-node src/scripts/get-users-by-word-in-tweet.ts",
     "test": "jest"
   },
   "author": "",

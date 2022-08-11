@@ -13,7 +13,7 @@ export class TwitterApi implements ITwitterApi {
    */
   public getUserIdsByWordInTweet = async (
     word: string,
-    maxResults: number
+    maxResults: number = 100
   ): Promise<string[]> => {
     const response = await this.client.tweets.tweetsRecentSearch({
       query: word,

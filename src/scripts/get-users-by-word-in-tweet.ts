@@ -26,4 +26,4 @@ const client = new Client(process.env.BEARER_TOKEN as string);
 const twitterApi = new TwitterApi(client);
 const script = new GetUsersByWordInTweet(twitterApi);
 
-script.execute("sample word", 100);
+script.execute(process.argv[2], process.argv[3] as unknown as number);
