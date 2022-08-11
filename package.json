@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "getUsersByWordInTweet": "ts-node src/scripts/get-users-by-word-in-tweet.ts",
+    "getUsersFollowingUser": "ts-node src/scripts/get-users-following-user.ts",
     "test": "jest"
   },
   "author": "",
