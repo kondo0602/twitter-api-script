@@ -5,10 +5,13 @@ import { UserDTO } from "../scripts/get-users-by-word-in-tweet";
 export class TwitterApi implements ITwitterApi {
   constructor(private readonly client: Client) {}
 
-  public getUserIdsByWordInTweet = async (word: string): Promise<string[]> => {
+  public getUserIdsByWordInTweet = async (
+    word: string,
+    maxResults: number
+  ): Promise<string[]> => {
     const response = await this.client.tweets.tweetsRecentSearch({
       query: word,
-      // max_results: MAX_RESULTS
+      max_results: maxResults,
       expansions: ["author_id"],
     });
 
